@@ -1,63 +1,129 @@
-/* Reset default margins, paddings, and box-sizing */
+/* General Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Ensure the HTML and body fill the viewport completely */
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    overflow: hidden; /* Prevent unwanted scrollbars */
-    background: none; /* Remove any default background color */
+    overflow: hidden;
+    background: #212121; /* Prevent white flash */
 }
 
-/* Main container */
+/* Loader Wrapper */
+.loader-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background: #212121;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+}
+
+/* Loader */
+.loader {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    border: 4px solid #282828;
+    overflow: hidden;
+    border-radius: 50%;
+    box-shadow: -5px -5px 5px rgba(255, 255, 255, 0.1),
+        10px 10px 10px rgba(0, 0, 0, 0.4),
+        inset -5px -5px 5px rgba(255, 255, 255, 0.2),
+        inset 10px 10px 10px rgba(0, 0, 0, 0.4);
+}
+
+.loader:before {
+    content: "";
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    right: 25px;
+    bottom: 25px;
+    z-index: 10;
+    background: #212121;
+    border-radius: 50%;
+    border: 2px solid #292929;
+    box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 0.2),
+        inset 3px 3px 5px rgba(0, 0, 0, 0.5);
+}
+
+.loader span {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-image: linear-gradient(
+        -225deg,
+        #ff7402 0%,
+        #ffe700 50%,
+        #fff55e 100%
+    );
+    filter: blur(20px);
+    z-index: -1;
+    animation: animate 0.5s linear infinite;
+}
+
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Main Screen */
 .main {
     width: 100%;
     height: 100vh;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.5) 50%), url(d.jpg); /* Replaced with d.jpg */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.5) 50%), url(d.jpg);
     background-position: center;
     background-size: cover;
     font-family: sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
 }
 
-/* Content wrapper */
+/* Content Styling */
 .content {
     text-align: center;
     color: white;
 }
 
-/* Logo */
 .Logo {
-    font-size: 100px; /* Increased size */
+    font-size: 100px;
     font-family: cursive;
     color: #ff7200;
     margin-bottom: 20px;
 }
 
-/* Quote */
 .quote {
-    font-size: 30px; /* Slightly bigger */
+    font-size: 30px;
     font-style: italic;
     margin-bottom: 30px;
-    color: #d1a804
 }
 
-/* Buttons container */
 .buttons {
     display: flex;
-    justify-content: center; /* Center the buttons */
-    gap: 20px; /* Add space between the buttons */
-    width: 100%; /* Take full width to center */
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
 }
 
-/* Button styles */
 .btn {
     padding: 10px 20px;
     background-color: #ff6600;
